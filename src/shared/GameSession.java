@@ -42,7 +42,9 @@ public class GameSession {
         return false;
     }
 
-    /** Switches to the next player when the current player finishes. */
+    /** Switches to the next player when the current player finishes.
+     * Also will check and return if the game is finished.
+     */
     public boolean switchCurrentPlayer() {
         if (gameFinished == true) {
             return false;
