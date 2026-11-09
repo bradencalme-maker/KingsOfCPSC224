@@ -24,11 +24,9 @@ public class CasinoFrame extends JFrame {
         splashPanel = new SplashPanel(this);
 
         this.add(mainPanel);
-        // UNCOMMENT ONCE playerSelectPanel is added
         playerSelectPanel = new PlayerSelectPanel(this);
 
         mainPanel.add(splashPanel, "SPLASH");
-        // UNCOMMENT ONCE playerSelectPanel is added
         mainPanel.add(playerSelectPanel, "PLAYER_SELECT");
 
         this.setVisible(true);
