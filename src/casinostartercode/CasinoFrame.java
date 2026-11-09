@@ -1,7 +1,7 @@
 package casinostartercode;
+import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.CardLayout;
 
 
 public class CasinoFrame extends JFrame {
@@ -9,7 +9,7 @@ public class CasinoFrame extends JFrame {
     private CardLayout cardLayout;
     private JPanel mainPanel;
     private JPanel splashPanel;
-    // private JPanel playerSelectPanel;
+    private JPanel playerSelectPanel;
 
     public CasinoFrame() {
         this.setTitle("Bit Casino");
@@ -25,11 +25,11 @@ public class CasinoFrame extends JFrame {
 
         this.add(mainPanel);
         // UNCOMMENT ONCE playerSelectPanel is added
-        // playerSelectPanel = new PlayerSelectPanel(this);
+        playerSelectPanel = new PlayerSelectPanel(this);
 
         mainPanel.add(splashPanel, "SPLASH");
         // UNCOMMENT ONCE playerSelectPanel is added
-        // mainPanel.add(playerSelectPanel, "PLAYER_SELECT");
+        mainPanel.add(playerSelectPanel, "PLAYER_SELECT");
 
         this.setVisible(true);
     }
