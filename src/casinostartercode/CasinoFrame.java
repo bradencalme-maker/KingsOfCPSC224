@@ -8,6 +8,8 @@ public class CasinoFrame extends JFrame {
 
     private CardLayout cardLayout;
     private JPanel mainPanel;
+    private JPanel splashPanel;
+    // private JPanel playerSelectPanel;
 
     public CasinoFrame() {
         this.setTitle("Bit Casino");
@@ -16,15 +18,30 @@ public class CasinoFrame extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 
-        this.setVisible(true);
 
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
+        splashPanel = new SplashPanel(this);
+
+        this.add(mainPanel);
+        // UNCOMMENT ONCE playerSelectPanel is added
+        // playerSelectPanel = new PlayerSelectPanel(this);
+
+        mainPanel.add(splashPanel, "SPLASH");
+        // UNCOMMENT ONCE playerSelectPanel is added
+        // mainPanel.add(playerSelectPanel, "PLAYER_SELECT");
+
+        this.setVisible(true);
     }
 
+    // Handles the mainPanel needing to switch between all other panels (cards)
+    // Each panel needs to be refered to using screenName passed in during 
+    // mainPanel.add(panelVar, screenName)
+    public void showScreen(String screenName) {
+        cardLayout.show(mainPanel, screenName);
+    }
 
-
-    public void main(String[] args) {
+    public static void main(String[] args) {
         CasinoFrame casino = new CasinoFrame();
 
     }
