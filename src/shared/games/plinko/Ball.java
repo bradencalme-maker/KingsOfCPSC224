@@ -22,4 +22,29 @@ public class Ball {
         g.setColor(Color.RED);
         g.fillOval((int)(x - radius), (int)(y - radius), radius * 2, radius * 2);
     }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getVx() {
+        return vx;
+    }
+
+    public double getVy() {
+        return vy;
+    }
+
+    public void setVX(double vx) {
+        this.vx = vx;
+    }
+
+    public void setVY(double vy) {
+        this.vy = vy;
+    }
+
 }
