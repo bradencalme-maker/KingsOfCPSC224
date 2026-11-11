@@ -22,6 +22,22 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        g.setColor(Color.BLACK);
+
+        for (int row = 0; row < 8; row++) {
+
+            int pegsInRow = row + 1;
+
+            for (int col = 0; col < pegsInRow; col++) {
+
+                int x = 400 - row * 25 + col * 50;
+                int y = 100 + row * 60;
+
+                g.fillOval(x, y, 10, 10);
+            }
+        }
+
         ball.draw(g);
     }
 }
