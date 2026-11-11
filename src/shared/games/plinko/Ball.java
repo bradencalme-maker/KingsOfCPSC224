@@ -39,12 +39,20 @@ public class Ball {
         return vy;
     }
 
-    public void setVX(double vx) {
+    public void setVx(double vx) {
         this.vx = vx;
     }
 
-    public void setVY(double vy) {
+    public void setVy(double vy) {
         this.vy = vy;
     }
 
+    public int getRadius() {
+        return radius;
+    }
+
+    public void setXY(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
 }

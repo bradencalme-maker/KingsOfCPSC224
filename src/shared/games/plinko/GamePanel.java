@@ -2,28 +2,45 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
 
-    Ball ball = new Ball(400, 150);
+    Ball ball = new Ball(400, 75);
+    private ArrayList<Peg> pegs = new ArrayList<>();
 
-    public GamePanel() {
-        setBounds(0, 0, 820, 700);
-        setBackground(Color.WHITE);
+    private void checkCollisions() {
 
-        // 16 ms ≈ 60 FPS
-        Timer timer = new Timer(16, e -> {
-            ball.update();
-            repaint();
-        });
-        timer.start();
+        for (Peg peg : pegs) {
+
+            double dx = ball.getX() - peg.getX();
+            double dy = ball.getY() - peg.getY();
+
+            double distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < ball.getRadius() + peg.getRadius()) {
+
+                if (Math.random() < 0.5) {
+                    ball.setVx(-2);
+                } else {
+                    ball.setVx(2);
+                }
+
+                ball.setVy(ball.getVy() * 0.8);
+            }
+        }
+
+        if (ball.getY() > getHeight() - ball.getRadius()) {
+            ball.setVy(0);
+            ball.setVx(0);
+            ball.setXY(400, 75);
+        }
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        g.setColor(Color.BLACK);
+    public GamePanel() {
+        
+        setBounds(0, 0, 820, 700);
+        setBackground(Color.WHITE);
 
         for (int row = 0; row < 8; row++) {
 
@@ -34,8 +51,25 @@ public class GamePanel extends JPanel {
                 int x = 400 - row * 25 + col * 50;
                 int y = 100 + row * 60;
 
-                g.fillOval(x, y, 10, 10);
+                pegs.add(new Peg(x, y, 5));
             }
+        }
+
+        // 16 ms ≈ 60 FPS
+        Timer timer = new Timer(16, e -> {
+            ball.update();
+            checkCollisions();
+            repaint();
+        });
+        timer.start();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        for (Peg peg : pegs) {
+            peg.draw(g);
         }
 
         ball.draw(g);
