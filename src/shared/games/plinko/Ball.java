@@ -4,18 +4,23 @@ import java.awt.Graphics;
 public class Ball {
     private double x, y;
     private double vx = 0, vy = 0;
-    private final int radius = 10;
+    private final int radius;
     private final double gravity = 0.4;
 
-    public Ball(double x, double y) {
+    public Ball(double x, double y, int radius) {
         this.x = x;
         this.y = y;
+        this.radius = radius;
     }
 
     public void update() {
         vy += gravity;
         x += vx;
         y += vy;
+        if (vy > 7) {
+            vy = 7;
+        }
+        System.out.println("Ball position vy: " + vy);
     }
 
     public void draw(Graphics g) {

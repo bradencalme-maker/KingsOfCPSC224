@@ -1,12 +1,12 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
 
-    Ball ball = new Ball(400, 75);
+    Ball ball = new Ball(400, 75, 8);
     private ArrayList<Peg> pegs = new ArrayList<>();
 
     private void checkCollisions() {
@@ -17,13 +17,16 @@ public class GamePanel extends JPanel {
             double dy = ball.getY() - peg.getY();
 
             double distance = Math.sqrt(dx * dx + dy * dy);
+            double buffer = 4; // small buffer
 
-            if (distance < ball.getRadius() + peg.getRadius()) {
+            if (distance + buffer < ball.getRadius() + peg.getRadius()) {
 
                 if (Math.random() < 0.5) {
                     ball.setVx(-2);
+                    ball.setVy(-1);
                 } else {
                     ball.setVx(2);
+                    ball.setVy(-1);
                 }
 
                 ball.setVy(ball.getVy() * 0.8);
