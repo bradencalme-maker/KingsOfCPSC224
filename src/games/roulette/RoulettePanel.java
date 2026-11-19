@@ -1,23 +1,34 @@
 package games.roulette;
 
 import javax.swing.JPanel;
-
 import casinostartercode.CasinoFrame;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
-
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import java.awt.Color;
+import java.util.Arrays;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 
 public class RoulettePanel extends JPanel{
+    private final Image background = new ImageIcon(
+        RoulettePanel.class.getResource("/games/roulette/images/retro-pixel-roulette.png")
+    ).getImage();
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+    }
     public RoulettePanel(CasinoFrame frame){
         setLayout(new BorderLayout(10,10));
 
@@ -68,6 +79,7 @@ public class RoulettePanel extends JPanel{
                 }
             }
         });
+
         constraints.gridx = 1;
         constraints.weightx = 7.5;
         tablePanel.add(topOfTableRight, constraints);
@@ -86,14 +98,17 @@ public class RoulettePanel extends JPanel{
         constraints.weighty = 1;
         constraints.weightx = 1;
         constraints.gridy = 0;
-        constraints.anchor = GridBagConstraints.WEST;
 
+        JLabel[] squares = new JLabel[39];
+        int count = 0;
         String name = "";
         String ist[] = {"rd","nd","st"};
         for (int i = 0; i < 3; i++){
             for (int column =0; column <= 11; column++){
                 name = String.valueOf((column+1)*3 - i);
                 JLabel label = new JLabel(name,JLabel.CENTER);
+                squares[count] = label;
+                count++;
                 label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 topOfTableRight.add(label);
             }
@@ -102,6 +117,13 @@ public class RoulettePanel extends JPanel{
             label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             topOfTableRight.add(label);
         }
+
+        // int[] red = {1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
+        // for(int i =0; i <39;i++){
+        //     if(Arrays.asList(red).contains(i)){
+
+        //     }
+        // }
         
         JPanel bottomTopOfTable = new JPanel(new GridLayout(1,3,0,0));
         GridBagConstraints rangePosition = new GridBagConstraints();
@@ -159,6 +181,15 @@ public class RoulettePanel extends JPanel{
 
         add(gamePanel, BorderLayout.CENTER);
         add(chipSelection, BorderLayout.SOUTH);
+
+        gamePanel.setOpaque(false);
+        spinnerPanel.setOpaque(false);
+        tablePanel.setOpaque(false);
+        topOfTableLeft.setOpaque(false);
+        topOfTableRight.setOpaque(false);
+        bottomTopOfTable.setOpaque(false);
+        bottomBottomOfTable.setOpaque(false);
+        chipSelection.setOpaque(false);
     }
     
 }
