@@ -6,7 +6,7 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel {
 
-    Ball ball = new Ball(400, 75, 8);
+    Ball ball = new Ball(400, 75, 7);
     private ArrayList<Peg> pegs = new ArrayList<>();
 
     private void checkCollisions() {
@@ -14,22 +14,20 @@ public class GamePanel extends JPanel {
         for (Peg peg : pegs) {
 
             double dx = ball.getX() - peg.getX();
-            double dy = ball.getY() - peg.getY();
+            double dy = ball.getY() - peg.getY();   
 
             double distance = Math.sqrt(dx * dx + dy * dy);
             double buffer = 4; // small buffer
 
-            if (distance + buffer < ball.getRadius() + peg.getRadius()) {
+            if (distance < ball.getRadius() + peg.getRadius() + buffer) {
+                double impact_dx = ball.getX() - peg.getX();
 
-                if (Math.random() < 0.5) {
-                    ball.setVx(-2);
-                    ball.setVy(-1);
-                } else {
-                    ball.setVx(2);
-                    ball.setVy(-1);
-                }
+                double impactPosition = impact_dx / (ball.getRadius() + peg.getRadius());
 
-                ball.setVy(ball.getVy() * 0.8);
+                double randomVariation = (Math.random() - 0.5) * 0.8;
+
+                ball.setVx(impactPosition * 3 + randomVariation);
+                ball.setVy(-2 - Math.random());
             }
         }
 
@@ -45,23 +43,38 @@ public class GamePanel extends JPanel {
         setBounds(0, 0, 820, 700);
         setBackground(Color.WHITE);
 
-        for (int row = 0; row < 8; row++) {
+        int rows = 10;
+        int spacingX = 50;
+        int spacingY = 45;
 
-            int pegsInRow = row + 1;
+        for (int row = 0; row < rows; row++) {
+
+            int pegsInRow = 9;
 
             for (int col = 0; col < pegsInRow; col++) {
 
-                int x = 400 - row * 25 + col * 50;
-                int y = 100 + row * 60;
+                int x = 200 + col * spacingX;
 
-                pegs.add(new Peg(x, y, 5));
+                // Offset every other row
+                if (row % 2 == 1) {
+                    x += spacingX / 2;
+                }
+
+                int y = 100 + row * spacingY;
+
+                pegs.add(new Peg(x, y, 3));
             }
         }
 
+
+
         // 16 ms ≈ 60 FPS
         Timer timer = new Timer(16, e -> {
-            ball.update();
-            checkCollisions();
+            for (int i = 0; i < 4; i++) {
+                ball.update(0.25);
+                checkCollisions();
+            }
+
             repaint();
         });
         timer.start();

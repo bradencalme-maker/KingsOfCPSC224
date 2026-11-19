@@ -13,14 +13,15 @@ public class Ball {
         this.radius = radius;
     }
 
-    public void update() {
-        vy += gravity;
-        x += vx;
-        y += vy;
+    public void update(double multiplier) {
+        vy += gravity * multiplier;
+
+        x += vx * multiplier;
+        y += vy * multiplier;
+
         if (vy > 7) {
             vy = 7;
         }
-        System.out.println("Ball position vy: " + vy);
     }
 
     public void draw(Graphics g) {
