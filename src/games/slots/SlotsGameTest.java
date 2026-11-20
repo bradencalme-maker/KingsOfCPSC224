@@ -1,9 +1,9 @@
 package games.slots;
 import org.junit.jupiter.api.Test;
-import shared.GameSession;
+import player.GameSession;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
-import shared.Player;
+import player.Player;
 
 public class SlotsGameTest {
     public Player player1 = new Player("Logan");

@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\logan\\CPSC-224-Coding-Assignments\\CPSC-224-HW-LogClev07\\lib\\junit-platform-console-standalone-1.14.4.jar"
+    ]
+}
