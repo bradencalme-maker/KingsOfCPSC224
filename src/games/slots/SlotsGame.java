@@ -1,10 +1,10 @@
 package games.slots;
-import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
-import shared.CreditAndTokenManager;
-import shared.GameSession;
-import shared.Player;
+import java.util.Random;
+import player.CreditAndTokenManager;
+import player.GameSession;
+import player.Player;
 
 
 public class SlotsGame {

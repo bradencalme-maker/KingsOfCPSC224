@@ -1,13 +1,11 @@
-package casinostartercode;
+package menu;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-
-import javax.swing.BorderFactory;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import java.awt.Image;
+import javax.swing.JPanel;
 
 public class SplashPanel extends JPanel {
     
@@ -15,8 +13,8 @@ public class SplashPanel extends JPanel {
         this.setBackground(Color.BLACK);
         this.setLayout(null);
 
-        ImageIcon icon = new ImageIcon("assets\\StartingBackgroundImage.png");
-
+        ImageIcon icon = new ImageIcon("assets/StartingBackgroundImage.png");
+        
         // Scale the image to 1000 x 700
         Image scaledImage = icon.getImage().getScaledInstance(
         1000, 700, Image.SCALE_SMOOTH

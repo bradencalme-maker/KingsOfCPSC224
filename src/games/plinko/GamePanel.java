@@ -7,7 +7,7 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel {
 
     Ball ball = new Ball(400, 75, 7);
-    private ArrayList<Peg> pegs = new ArrayList<>();
+    private final ArrayList<Peg> pegs = new ArrayList<>();
 
     private void checkCollisions() {
 
@@ -19,6 +19,9 @@ public class GamePanel extends JPanel {
             double distance = Math.sqrt(dx * dx + dy * dy);
             double buffer = 4; // small buffer
 
+            double xMultiplier = 1.2;
+            double yMultiplier = -2;
+
             if (distance < ball.getRadius() + peg.getRadius() + buffer) {
                 double impact_dx = ball.getX() - peg.getX();
 
@@ -26,8 +29,8 @@ public class GamePanel extends JPanel {
 
                 double randomVariation = (Math.random() - 0.5) * 0.8;
 
-                ball.setVx(impactPosition * 3 + randomVariation);
-                ball.setVy(-2 - Math.random());
+                ball.setVx(impactPosition * xMultiplier + randomVariation);
+                ball.setVy(yMultiplier - Math.random());
             }
         }
 
@@ -83,6 +86,11 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        // Background
+        // Dark Green Background
+        g.setColor(Color.decode("#006400"));
+        g.fillRect(0, 0, getWidth(), getHeight());
 
         for (Peg peg : pegs) {
             peg.draw(g);

@@ -1,4 +1,4 @@
-package casinostartercode;
+package menu;
 
 import java.awt.Color;
 import java.awt.FontMetrics;

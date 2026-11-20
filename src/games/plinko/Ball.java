@@ -19,9 +19,9 @@ public class Ball {
         x += vx * multiplier;
         y += vy * multiplier;
 
-        if (vy > 7) {
-            vy = 7;
-        }
+        // if (vy > 7) {
+        //     vy = 7;
+        // }
     }
 
     public void draw(Graphics g) {

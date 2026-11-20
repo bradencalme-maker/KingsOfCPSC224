@@ -1,7 +1,6 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -19,7 +18,7 @@ public class Window implements ActionListener {
         frame.add(gamePanel);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(820, 700);
+        frame.setSize(1000, 700);
         frame.setLayout(null);
         frame.setResizable(false);
         frame.setVisible(true);
