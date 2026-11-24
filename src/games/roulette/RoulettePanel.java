@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import java.awt.Dimension;
 
 
 public class RoulettePanel extends JPanel{
@@ -30,9 +31,35 @@ public class RoulettePanel extends JPanel{
         g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
     }
     public RoulettePanel(CasinoFrame frame){
-        setLayout(new BorderLayout(10,10));
+        setLayout(new BorderLayout(0,0));
 
         JPanel gamePanel = new JPanel(new GridLayout(1,2,10,0));
+
+        JPanel navigationPanel = new JPanel(new GridLayout(2,1,0,0));
+        navigationPanel.setPreferredSize(new Dimension(50,50));
+
+        JButton lobby = new JButton();
+        lobby.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        navigationPanel.add(lobby);
+
+        JButton quit = new JButton();
+        quit.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        navigationPanel.add(quit);
+
+        JPanel playerStat = new JPanel(new GridLayout(1,4,0,0));
+        JLabel gameName = new JLabel("GameName",JLabel.CENTER);
+        JLabel names = new JLabel("Name",JLabel.CENTER);
+        JLabel credits = new JLabel("Credits",JLabel.CENTER);
+        JLabel tokens = new JLabel("tokens",JLabel.CENTER);
+        gameName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        names.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        credits.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        tokens.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        playerStat.add(gameName);
+        playerStat.add(names);
+        playerStat.add(credits);
+        playerStat.add(tokens);
+
 
         JPanel spinnerPanel = new JPanel();
         JPanel tablePanel = new JPanel(new GridBagLayout());
@@ -178,18 +205,22 @@ public class RoulettePanel extends JPanel{
 
 
         JPanel chipSelection = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        chipSelection.setPreferredSize(new Dimension(100,100));
+
 
         add(gamePanel, BorderLayout.CENTER);
         add(chipSelection, BorderLayout.SOUTH);
+        add(playerStat, BorderLayout.NORTH);
+        add(navigationPanel, BorderLayout.WEST);
 
-        gamePanel.setOpaque(false);
-        spinnerPanel.setOpaque(false);
-        tablePanel.setOpaque(false);
-        topOfTableLeft.setOpaque(false);
-        topOfTableRight.setOpaque(false);
-        bottomTopOfTable.setOpaque(false);
-        bottomBottomOfTable.setOpaque(false);
-        chipSelection.setOpaque(false);
+        // gamePanel.setOpaque(false);
+        // spinnerPanel.setOpaque(false);
+        // tablePanel.setOpaque(false);
+        // topOfTableLeft.setOpaque(false);
+        // topOfTableRight.setOpaque(false);
+        // bottomTopOfTable.setOpaque(false);
+        // bottomBottomOfTable.setOpaque(false);
+        // chipSelection.setOpaque(false);
     }
     
 }
