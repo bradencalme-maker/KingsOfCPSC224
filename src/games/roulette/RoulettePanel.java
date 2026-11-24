@@ -63,7 +63,7 @@ public class RoulettePanel extends JPanel{
 
         JPanel spinnerPanel = new JPanel();
         JPanel tablePanel = new JPanel(new GridBagLayout());
-        tablePanel.setBorder(BorderFactory.createEmptyBorder(150, 0, 150, 30));
+        tablePanel.setBorder(BorderFactory.createEmptyBorder(150, 0, 100, 50));
         gamePanel.add(spinnerPanel);
         gamePanel.add(tablePanel);
 
@@ -205,7 +205,7 @@ public class RoulettePanel extends JPanel{
 
 
         JPanel chipSelection = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        chipSelection.setPreferredSize(new Dimension(100,100));
+        chipSelection.setPreferredSize(new Dimension(100,150));
 
 
         add(gamePanel, BorderLayout.CENTER);
