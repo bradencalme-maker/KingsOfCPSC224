@@ -1,7 +1,7 @@
 package games.roulette;
 
 import javax.swing.JPanel;
-import casinostartercode.CasinoFrame;
+import menu.CasinoFrame;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.BorderLayout;

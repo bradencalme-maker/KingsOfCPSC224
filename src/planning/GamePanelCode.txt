@@ -1,0 +1,27 @@
+        JPanel navigationPanel = new JPanel(new GridLayout(2,1,0,0));
+        navigationPanel.setPreferredSize(new Dimension(50,50));
+
+        JButton lobby = new JButton();
+        lobby.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        navigationPanel.add(lobby);
+
+        JButton quit = new JButton();
+        quit.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        navigationPanel.add(quit);
+
+        JPanel playerStat = new JPanel(new GridLayout(1,4,0,0));
+        JLabel gameName = new JLabel("GameName",JLabel.CENTER);
+        JLabel names = new JLabel("Name",JLabel.CENTER);
+        JLabel credits = new JLabel("Credits",JLabel.CENTER);
+        JLabel tokens = new JLabel("tokens",JLabel.CENTER);
+        gameName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        names.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        credits.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        tokens.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        playerStat.add(gameName);
+        playerStat.add(names);
+        playerStat.add(credits);
+        playerStat.add(tokens);
+
+        add(playerStat, BorderLayout.NORTH);
+        add(navigationPanel, BorderLayout.WEST);
