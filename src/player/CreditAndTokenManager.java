@@ -1,4 +1,4 @@
-package shared;
+package player;
 
 /** Manages player bets, credits, and play tokens. */
 public class CreditAndTokenManager {

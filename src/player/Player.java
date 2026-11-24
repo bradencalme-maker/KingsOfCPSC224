@@ -1,4 +1,4 @@
-package shared;
+package player;
 
 /** Stores a player's name, credits, and play tokens. */
 public class Player {
